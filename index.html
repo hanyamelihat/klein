@@ -60,6 +60,11 @@
     </style>
 </head>
 <body>
+    <!-- Backsound -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/10/18/audio_1c6a3c1d2d.mp3?filename=romantic-piano-124477.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="flex items-center justify-center p-8 min-h-screen">
         <div class="book-slipcase w-full max-w-3xl">
             <div class="book-cover">
@@ -132,6 +137,8 @@
         }
         document.addEventListener('DOMContentLoaded', () => {
             gsap.from(".book-slipcase", {opacity: 0, y: 50, duration: 1.5, ease: "power3.out"});
+            const bgm = document.getElementById('bgm');
+            bgm.volume = 0.5;
         });
     </script>
 </body>
