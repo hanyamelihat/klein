@@ -1,145 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Revelation of Absence - Esa Editions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
-        
-        :root {
-            --parchment: #f5f0e5;
-            --ink: #1a1a1a;
-            --gilt: #8c7851;
-            --blood: #5c0000;
-        }
-        
-        body {
-            background: #111;
-            font-family: 'Libre Baskerville', serif;
-            color: var(--ink);
-            line-height: 1.8;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .book-slipcase {
-            background: #050505;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 0 1px #222, 0 0 0 10px #050505;
-            border-radius: 2px;
-            perspective: 1800px;
-            transform-style: preserve-3d;
-        }
-        
-        .book-cover {
-            background: var(--parchment);
-            overflow: hidden;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.1);
-            position: relative;
-            background-image: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.1) 100%), repeating-linear-gradient(var(--parchment), var(--parchment) 29px, rgba(0,0,0,0.1) 29px, rgba(0,0,0,0.1) 30px);
-        }
-        
-        .book-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 35px; background: linear-gradient(to bottom, #0a0a0a 0%, #000 100%); box-shadow: inset -5px 0 15px rgba(0,0,0,0.7), inset 0 0 0 1px #333; }
-        .spine-title { position: absolute; top: 50%; left: 10px; transform: rotate(90deg) translateX(-50%); font-family: 'Cormorant Garamond', serif; color: var(--gilt); font-size: 1.1rem; letter-spacing: 3px; font-weight: 600; white-space: nowrap; }
-        .page { padding: 4rem 5rem; position: relative; min-height: 90vh; }
-        .title { font-family: 'Cormorant Garamond', serif; color: var(--ink); font-weight: 700; letter-spacing: 0.5px; }
-        .chapter-number { font-family: 'Cormorant Garamond', serif; position: absolute; top: 2rem; right: 3rem; font-size: 0.9rem; color: var(--gilt); }
-        .header-decoration { width: 70%; height: 1px; background: var(--ink); margin: 3rem auto; opacity: 0.2; }
-        .drop-cap { float: left; font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 0.8; margin: 0.2rem 0.5rem 0 0; color: var(--ink); }
-        .btn { transition: all 0.3s ease; letter-spacing: 0.5px; font-family: 'Cormorant Garamond', serif; position: relative; background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 0.5rem 1.5rem; cursor:pointer; }
-        .btn:hover { background: rgba(0,0,0,0.05); transform: translateY(-2px); }
-        .btn-no { background: #000; color: #fff; border: 1px solid #000; }
-        .btn-no:hover { background: #111; transform:none; }
-        .hidden { display: none; }
-        .folio { position: absolute; bottom: 2rem; right: 3rem; font-size: 0.7rem; opacity: 0.5; }
-        .press-mark { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); text-align: center; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.7; }
-        .mega-text-wrapper { max-height: 60vh; overflow-y: auto; margin: 2rem 0; padding: 1rem 0; }
-        .mega-text { white-space: pre-line; line-height: 2; font-family: 'Libre Baskerville', serif; text-align: center; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Revelation of Absence - Esa Editions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+    :root {
+      --parchment: #f5f0e5;
+      --ink: #1a1a1a;
+      --gilt: #8c7851;
+      --blood: #5c0000;
+    }
+    body {
+      background: #111;
+      font-family: 'Libre Baskerville', serif;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+    }
+    .book-slipcase {
+      background:#050505;
+      box-shadow:0 20px 40px rgba(0,0,0,0.8);
+      border-radius:8px;
+      max-width:700px;
+      width:100%;
+    }
+    .book-cover {
+      background:var(--parchment);
+      border-radius:6px;
+      box-shadow:inset 0 0 40px rgba(0,0,0,0.1);
+      padding:1.5rem;
+    }
+    .title {font-family:'Cormorant Garamond',serif; font-weight:700;}
+    .btn {
+      font-family:'Cormorant Garamond',serif;
+      border:1px solid var(--ink);
+      padding:.5rem 1.2rem;
+      transition:.3s;
+      border-radius:6px;
+    }
+    .btn:hover {background:rgba(0,0,0,0.05);}
+    .btn-no {background:#000; color:#fff; border:1px solid #000;}
+    .btn-no:hover {background:#222;}
+    .mega-text-wrapper {max-height:60vh; overflow-y:auto; margin-top:1rem; padding:.5rem;}
+    .mega-text {white-space:pre-line; text-align:center; font-size:.9rem;}
+    @media (max-width:640px){
+      .page {padding:1rem !important;}
+      .title {font-size:1.5rem;}
+      .mega-text {font-size:.8rem;}
+    }
+  </style>
 </head>
 <body>
-    <!-- Backsound -->
-    <audio id="bgm" autoplay loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/10/18/audio_1c6a3c1d2d.mp3?filename=romantic-piano-124477.mp3" type="audio/mpeg">
-    </audio>
+  <!-- Backsound -->
+  <audio id="bgm" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/18/audio_1c6a3c1d2d.mp3?filename=romantic-piano-124477.mp3" type="audio/mpeg">
+  </audio>
 
-    <div class="flex items-center justify-center p-8 min-h-screen">
-        <div class="book-slipcase w-full max-w-3xl">
-            <div class="book-cover">
-                <div class="book-spine">
-                    <div class="spine-title">THE REVELATION OF ABSENCE</div>
-                </div>
-                
-                <!-- Main Page -->
-                <div id="main-page" class="page">
-                    <div class="chapter-number">Sequence 1</div>
-                    <div class="header-decoration"></div>
-                    <h1 class="title text-3xl text-center mb-6 mt-10">Do I Miss You?</h1>
-                    <div class="max-w-xl mx-auto mb-10">
-                        <span class="drop-cap">T</span>
-                        <p class="mb-6">he question echoes through the hollow chambers of the heart, a riddle wrapped in the fog of human emotion. To confess or deny - both choices revealing in their own manner.</p>
-                        <p>Choose your path below, but choose wisely, for the truth may prove more than you bargained for.</p>
-                    </div>
-                    <div class="flex flex-col space-y-4 w-full max-w-xs mx-auto">
-                        <button onclick="showYesPage()" class="btn">Yes, I Miss You</button>
-                        <button onclick="denyClicked()" class="btn btn-no">No, I Don't</button>
-                    </div>
-                    <div class="press-mark">ESA EDITIONS • LONDON • 1892</div>
-                    <div class="folio">Folio 1</div>
-                </div>
-                
-                <!-- Yes Page -->
-                <div id="yes-page" class="page hidden">
-                    <div class="chapter-number">Confession</div>
-                    <div class="header-decoration"></div>
-                    <div class="max-w-xl mx-auto mb-8">
-                        <span class="drop-cap">T</span>
-                        <p>he heart's truth spills forth unbidden, an endless cascade of longing:</p>
-                    </div>
-                    <div class="mega-text-wrapper">
-                        <div class="mega-text" id="repeat-text"></div>
-                    </div>
-                    <button onclick="backToMain()" class="btn mx-auto block mt-8">Return to Query</button>
-                    <div class="folio">Folio 2</div>
-                </div>
-            </div>
+  <div class="book-slipcase">
+    <div class="book-cover">
+      <!-- Main Page -->
+      <div id="main-page" class="page">
+        <h1 class="title text-2xl text-center mb-6">Do I Miss You?</h1>
+        <p class="text-center mb-6">The question echoes through the hollow chambers of the heart. To confess or deny — both choices revealing in their own manner.</p>
+        <div class="flex flex-col space-y-3 w-full max-w-xs mx-auto">
+          <button onclick="showYesPage()" class="btn">Yes, I Miss You</button>
+          <button onclick="denyClicked()" class="btn btn-no">No, I Don't</button>
         </div>
-    </div>
+      </div>
 
-    <script>
-        const tl = gsap.timeline();
-        function showYesPage() {
-            tl.to("#main-page", {opacity: 0, y: 30, duration: 0.8, ease: "power2.in", onComplete: () => {
-                document.getElementById('main-page').classList.add('hidden');
-                let text = '';
-                const phrase = 'Aku kangen pol sama kamu\n';
-                const totalLines = 500;
-                for (let i = 0; i < totalLines; i++) { text += phrase; if (i % 20 === 0) text += '\n'; }
-                document.getElementById('repeat-text').textContent = text;
-                document.getElementById('yes-page').style.opacity = 0;
-                document.getElementById('yes-page').classList.remove('hidden');
-                tl.fromTo("#yes-page", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" });
-            }});
-        }
-        function backToMain() {
-            const currentPage = document.querySelector('.page:not(.hidden)');
-            tl.to(currentPage, {opacity: 0, y: 30, duration: 0.8, ease: "power2.in", onComplete: () => {
-                document.getElementById('yes-page').classList.add('hidden');
-                document.getElementById('main-page').style.opacity = 0;
-                document.getElementById('main-page').classList.remove('hidden');
-                tl.fromTo("#main-page", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" });
-            }});
-        }
-        function denyClicked() {
-            alert("Mana mungkin!");
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            gsap.from(".book-slipcase", {opacity: 0, y: 50, duration: 1.5, ease: "power3.out"});
-            const bgm = document.getElementById('bgm');
-            bgm.volume = 0.5;
-        });
-    </script>
+      <!-- Yes Page -->
+      <div id="yes-page" class="page hidden">
+        <h2 class="title text-xl text-center mb-4">Confession</h2>
+        <p class="text-center">The heart's truth spills forth unbidden, an endless cascade of longing:</p>
+        <div class="mega-text-wrapper">
+          <div class="mega-text" id="repeat-text"></div>
+        </div>
+        <button onclick="backToMain()" class="btn mx-auto block mt-4">Return to Query</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline();
+    function showYesPage(){
+      tl.to("#main-page", {opacity:0, y:20, duration:.6, ease:"power2.in", onComplete:()=>{
+        document.getElementById('main-page').classList.add('hidden');
+        let text='', phrase='Aku kangen pol sama kamu\n', totalLines=300;
+        for(let i=0;i<totalLines;i++){text+=phrase; if(i%20===0) text+='\n';}
+        document.getElementById('repeat-text').textContent=text;
+        document.getElementById('yes-page').style.opacity=0;
+        document.getElementById('yes-page').classList.remove('hidden');
+        tl.fromTo("#yes-page",{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:"power3.out"});
+      }});
+    }
+    function backToMain(){
+      const currentPage=document.querySelector('.page:not(.hidden)');
+      tl.to(currentPage,{opacity:0,y:20,duration:.6,ease:"power2.in",onComplete:()=>{
+        document.getElementById('yes-page').classList.add('hidden');
+        document.getElementById('main-page').style.opacity=0;
+        document.getElementById('main-page').classList.remove('hidden');
+        tl.fromTo("#main-page",{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:"power3.out"});
+      }});
+    }
+    function denyClicked(){alert("Mana mungkin!");}
+    document.addEventListener('DOMContentLoaded',()=>{
+      gsap.from(".book-slipcase",{opacity:0,y:40,duration:1,ease:"power3.out"});
+      const bgm=document.getElementById('bgm'); bgm.volume=0.5;
+    });
+  </script>
 </body>
 </html>
